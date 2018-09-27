@@ -1,6 +1,6 @@
 ﻿namespace Strategy.Duck
 {
-    public interface IFlyable
+    public interface IFlyBehavior
     {
         string Fly();
     }

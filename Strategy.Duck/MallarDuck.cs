@@ -1,20 +1,16 @@
 ﻿namespace Strategy.Duck
 {
-    public class MallarDuck : Duck , IFlyable, IQuackable
+    public class MallarDuck : Duck 
     {
+        public MallarDuck()
+        {
+            QuackBehavior = new Quack();
+            FlyBehavior = new FlyWithWings();
+        }
+
         public override string Display()
         {
             return "looks like a mallard";
-        }
-
-        public string Fly()
-        {
-            return "fly";
-        }
-
-        public string Quack()
-        {
-            return "quack";
-        }
+        } 
     }
 }

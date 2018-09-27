@@ -8,11 +8,11 @@ namespace Strategy.Duck.Test
         [Fact]
         public void MallarDuck_Should_Quack_Swim_Fly_Display()
         {
-            var mallarDuck = new MallarDuck();
+            Duck mallarDuck = new MallarDuck();
 
-            Assert.Equal("quack", mallarDuck.Quack());
+            Assert.Equal("quack", mallarDuck.PerformQuack());
             Assert.Equal("swim", mallarDuck.Swim());
-            Assert.Equal("fly", mallarDuck.Fly());
+            Assert.Equal("fly", mallarDuck.PerformFly());
             Assert.Equal("looks like a mallard", mallarDuck.Display());
         }
 
@@ -21,12 +21,10 @@ namespace Strategy.Duck.Test
         {
             var redheadDuck = new RedheadDuck();
 
-            Assert.Equal("quack", redheadDuck.Quack());
+            Assert.Equal("quack", redheadDuck.PerformQuack());
             Assert.Equal("swim", redheadDuck.Swim());
-            Assert.Equal("fly", redheadDuck.Fly());
-            Assert.Equal("looks like a redhead", redheadDuck.Display());
-
-            IFlyable a =   new RedheadDuck(); 
+            Assert.Equal("fly", redheadDuck.PerformFly());
+            Assert.Equal("looks like a redhead", redheadDuck.Display()); 
         }
 
         [Fact]
@@ -34,7 +32,7 @@ namespace Strategy.Duck.Test
         {
             var rubberDuck = new RubberDuck();
 
-            Assert.Equal("squeak", rubberDuck.Quack());
+            Assert.Equal("squeak", rubberDuck.PerformQuack());
             Assert.Equal("swim", rubberDuck.Swim()); 
             Assert.Equal("looks like a rubberduck", rubberDuck.Display());
         }
@@ -42,7 +40,9 @@ namespace Strategy.Duck.Test
         [Fact]
         public void RubberDuck_Should_Not_Fly()
         {
-            //TODO
+            var rubberDuck = new RubberDuck();
+
+            Assert.Equal(String.Empty, rubberDuck.PerformFly());
         }
         
         [Fact]
@@ -57,13 +57,22 @@ namespace Strategy.Duck.Test
         [Fact]
         public void DecoyDuck_Should_Not_Fly_Quack()
         {
-            //TODO
-            //var decoyDuck = new DecoyDuck();
+            var decoyDuck = new DecoycDuck();
 
-            //Assert.Equal("nothing", decoyDuck.Quack());
-            //Assert.Equal("nothing", decoyDuck.Fly());
+            Assert.Equal(String.Empty, decoyDuck.PerformQuack());
+            Assert.Equal(string.Empty, decoyDuck.PerformFly());
         }
 
-        
+        [Fact]
+        public void ModelDuck_Should_Change_FlyBehavior()
+        {
+            var modelDuck = new ModelDuck();
+
+            Assert.Equal(String.Empty, modelDuck.PerformFly());
+
+            modelDuck.FlyBehavior = new FlyRocketPowered();
+
+            Assert.Equal("rocket fly", modelDuck.PerformFly());
+        }
     }
 }

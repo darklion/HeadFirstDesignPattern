@@ -1,16 +1,16 @@
 ﻿namespace Strategy.Duck
 {
-    public class RubberDuck : Duck 
+    public class ModelDuck : Duck 
     {
-        public RubberDuck()
+        public ModelDuck()
         {
-            QuackBehavior = new Squeak();
+            QuackBehavior = new MuteQuack();
             FlyBehavior = new FlyNoWay();
         }
 
         public override string Display()
         {
-            return "looks like a rubberduck";
+            return "looks like a modelduck";
         }
     }
 }
