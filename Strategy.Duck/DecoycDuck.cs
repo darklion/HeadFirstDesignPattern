@@ -1,6 +1,6 @@
 ﻿namespace Strategy.Duck
 {
-    public class DecoyDuck : Duck
+    public class DecoycDuck : Duck
     {
         public override string Display()
         {
