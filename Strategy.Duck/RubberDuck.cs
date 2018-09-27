@@ -1,20 +1,15 @@
 ﻿namespace Strategy.Duck
 {
-    public class RubberDuck : Duck
+    public class RubberDuck : Duck , IQuackable
     {
         public override string Display()
         {
             return "looks like a rubberduck";
         }
 
-        public override string Quack()
+        public   string Quack()
         {
             return "squeak";
-        }
-
-        public override string Fly()
-        {
-            return "nothing";
-        }
+        } 
     }
 }
